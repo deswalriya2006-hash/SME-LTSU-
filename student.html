@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>StudentHub</h2>
+<p class="menu active" onclick="showSection('dashboard', this)">
+    Dashboard
+</p>
+
+<p class="menu" onclick="showSection('students', this)">
+    Students
+</p>
+
+<p class="menu" onclick="showSection('departments', this)">
+    Departments
+</p>
+
+<p class="menu" onclick="showSection('analytics', this)">
+    Analytics
+</p>
+    </div>
+
+    <div class="main">
+
+        <!-- Dashboard -->
+        <section id="dashboard" class="page-section">
+            <h1>Student Dashboard</h1>
+            <p>Welcome to your Student Portal Management System.</p>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Students</h3>
+                    <p class="number" id="totalStudents">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Departments</h3>
+                    <p class="number" id="totalDepartments">4</p>
+                </div>
+
+                <div class="card">
+                    <h3>Portal Status</h3>
+                    <p class="status">Active</p>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>About the Portal</h2>
+                <p>
+                    Manage student records, view departments,
+                    search students and update their information.
+                </p>
+                <button onclick="showSection('students',
+                    document.querySelectorAll('.menu')[1])">
+                    View Students
+                </button>
+            </div>
+        </section>
+
+        <!-- Students -->
+        <section id="students" class="page-section" hidden>
+            <h1>Student Directory</h1>
+            <p>View and manage student information.</p>
+
+            
+<div class="toolbar">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by name, roll number or course..."
+        oninput="renderStudents()"
+    >
+
+    <select
+        id="departmentFilter"
+        onchange="renderStudents()"
+    >
+        <option value="All">All Departments</option>
+        <option value="CSE">Computer Science</option>
+        <option value="IT">Information Technology</option>
+        <option value="ECE">Electronics</option>
+        <option value="ME">Mechanical</option>
+    </select>
+
+    <button type="button" onclick="openStudentForm()">
+        + Add Student
+    </button>
+
+    <button type="button" onclick="exportStudentsCSV()">
+        Download CSV
+    </button>
+</div>
+
+
+            <!-- Add/Edit Form -->
+            <div id="studentFormBox" class="panel" hidden>
+                <h2 id="formTitle">Add Student</h2>
+
+                <form id="studentForm">
+                    <input type="hidden" id="studentId">
+
+                    <label for="studentName">Full Name</label>
+                    <input type="text" id="studentName"
+                        placeholder="Enter student name" required>
+
+                    <label for="rollNumber">Roll Number</label>
+                    <input type="text" id="rollNumber"
+                        placeholder="Enter roll number" required>
+
+                    <label for="studentCourse">Course</label>
+                    <input type="text" id="studentCourse"
+                        placeholder="Example: B.Tech CSE" required>
+
+                    <label for="studentSemester">Semester</label>
+                    <select id="studentSemester" required>
+                        <option value="">Select Semester</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+
+                    <label for="studentDepartment">Department</label>
+                    <select id="studentDepartment" required>
+                        <option value="">Select Department</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="IT">Information Technology</option>
+                        <option value="ECE">Electronics</option>
+                        <option value="ME">Mechanical</option>
+                    </select>
+
+                    <label for="studentEmail">Email</label>
+                    <input type="email" id="studentEmail"
+                        placeholder="Enter email address" required>
+
+                    <div class="form-buttons">
+                        <button type="submit">Save Student</button>
+                        <button type="button" class="secondary"
+                            onclick="closeStudentForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="panel table-panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Roll No.</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Semester</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Departments -->
+        <section id="departments" class="page-section" hidden>
+            <h1>Departments</h1>
+            <p>Click a department to view its students.</p>
+
+            <div class="cards">
+                <div class="card department-card"
+                    onclick="showDepartment('CSE')">
+                    <h2>CSE</h2>
+                    <p>Computer Science</p>
+                    <span id="count-CSE">0 students</span>
+                </div>
+
+                <div class="card department-card"
+                    onclick="showDepartment('IT')">
+                    <h2>IT</h2>
+                    <p>Information Technology</p>
+                    <span id="count-IT">0 students</span>
+                </div>
+
+                <div class="card department-card"
+                    onclick="showDepartment('ECE')">
+                    <h2>ECE</h2>
+                    <p>Electronics</p>
+                    <span id="count-ECE">0 students</span>
+                </div>
+
+                <div class="card department-card"
+                    onclick="showDepartment('ME')">
+                    <h2>ME</h2>
+                    <p>Mechanical Engineering</p>
+                    <span id="count-ME">0 students</span>
+                </div>
+            </div>
+
+            <div id="departmentStudentBox" class="panel" hidden>
+                <h2 id="departmentTitle">Department Students</h2>
+
+                <button class="secondary"
+                    onclick="closeDepartment()">Back to Departments</button>
+
+                <div class="table-panel">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Roll No.</th>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Semester</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody id="departmentTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+<!-- Analytics Section -->
+<section id="analytics" class="page-section" hidden>
+    <h1>Student Analytics</h1>
+    <p>Explore your student enrollment statistics.</p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Students</h3>
+            <p class="number" id="analyticsTotal">0</p>
+        </div>
+
+        <div class="card">
+            <h3>Largest Department</h3>
+            <p class="number" id="largestDepartment">-</p>
+        </div>
+
+        <div class="card">
+            <h3>Average Semester</h3>
+            <p class="number" id="averageSemester">0</p>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Department-wise Enrollment</h2>
+        <div id="departmentChart"></div>
+    </div>
+
+    <div class="panel">
+        <h2>Semester-wise Enrollment</h2>
+        <div id="semesterChart"></div>
+    </div>
+</section>
+
+<!-- Student Profile Popup -->
+<div id="profileModal" class="profile-modal" hidden>
+    <div class="profile-content">
+        <button class="close-profile"
+            onclick="closeStudentProfile()">Close</button>
+
+        <h2>Student Profile</h2>
+        <div id="profileDetails"></div>
+    </div>
+</div> 
+    </div>
+
+    <script src="student.js"></script>
+</body>
+</html>

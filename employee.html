@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+
+    <link rel="stylesheet" href="employee.css">
+</head>
+<body>
+
+    <div class="sidebar">
+    <h2>EmployeeHub</h2><p class="menu active" onclick="showSection('dashboard', this)">
+    Dashboard
+</p>
+
+<p class="menu" onclick="showSection('employees', this)">
+    Employees
+</p>
+
+<p class="menu" onclick="showSection('departments', this)">
+    Departments
+</p>
+
+</div>
+
+    <div class="main">
+        <section id="dashboard" class="page- section">
+
+        <header>
+            <h1>Employee Management System</h1>
+            <p>Manage your employees in one place</p>
+        </header>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Employees</h3>
+                <h2 id="total">0</h2>
+            </div>
+
+            <div class="card">
+                <h3>Departments</h3>
+                <h2>5</h2>
+            </div>
+
+            <div class="card">
+                <h3>System Status</h3>
+                <h2>Active</h2>
+            </div>
+        </div>
+</section>
+
+        <section id="employees" class="page-section employee-section" style="display:none;">
+         
+<div class="section-heading">
+    <h2>Employee Directory</h2>
+
+    <div>
+        <input type="text" id="search"
+               placeholder="Search employee...">
+<select id="department">
+            <option value="All">All Departments</option>
+            <option value="IT">IT</option>
+            <option value="HR">HR</option>
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+        </select>
+
+        <button onclick="showForm()">Add Employee</button>
+    </div>
+</div>
+
+<div id="employee-form" style="display: none;">
+    <input type="text" id="emp-name" placeholder="Employee Name">
+    <input type="number" id="emp-salary" placeholder="Salary">
+    <input type="number" id="emp-age" placeholder="Age">
+
+    <button onclick="addEmployee()">Save Employee</button>
+    <button onclick="hideForm()">Cancel</button>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody id="employee-list">
+        <tr>
+            <td colspan="5">Loading employees...</td>
+        </tr>
+    </tbody>
+</table>
+        </section>
+        
+       <section id="departments" class="page-section" style="display: none;"><h2>Departments</h2>
+<p>Click a department to view its employees.</p>
+
+<div class="cards">
+
+    <div class="card department-card" onclick="showDepartmentEmployees('IT')">
+        <h3>IT</h3>
+        <p>Information Technology</p>
+    </div>
+
+    <div class="card department-card" onclick="showDepartmentEmployees('HR')">
+        <h3>HR</h3>
+        <p>Human Resources</p>
+    </div>
+
+    <div class="card department-card" onclick="showDepartmentEmployees('Finance')">
+        <h3>Finance</h3>
+        <p>Financial Management</p>
+    </div>
+
+    <div class="card department-card" onclick="showDepartmentEmployees('Marketing')">
+        <h3>Marketing</h3>
+        <p>Marketing and Promotion</p>
+    </div>
+
+</div>
+
+<div id="department-employee-list" style="display: none; margin-top: 25px;">
+    <h3 id="department-title">Employees</h3>
+
+    <button onclick="closeDepartmentEmployees()">
+        Back to Departments
+    </button>
+
+    <div id="department-employees"></div>
+</div>
+
+</section>
+    </div>
+
+    <script src="employee.js"></script>
+</body>
+</html>
