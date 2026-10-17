@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Sign Up</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e6e6fa;;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            width: 320px;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        input, select {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            background: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background:#e6e6fa;
+            color: rgb(205, 11, 11);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #8e44ad;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Student Sign Up</h1>
+        <p>Create your university account</p>
+
+        <form>
+
+            <input type="text"
+                   placeholder="Full Name"
+                   required>
+
+            <input type="text"
+                   placeholder="University Roll Number"
+                   required>
+
+            <input type="text"
+                   placeholder="Create Username"
+                   required>
+
+            <input type="email"
+                   placeholder="University Email"
+                   required>
+
+            <label for="semester">Select Semester</label>
+
+            <select id="semester" required>
+                <option value="">Choose Semester</option>
+                <option value="1">1st Semester</option>
+                <option value="2">2nd Semester</option>
+                <option value="3">3rd Semester</option>
+                <option value="4">4th Semester</option>
+                <option value="5">5th Semester</option>
+                <option value="6">6th Semester</option>
+                <option value="7">7th Semester</option>
+                <option value="8">8th Semester</option>
+            </select>
+             <input type="text"
+                   placeholder="Address"
+                   required>
+
+            <input type="text"
+                   placeholder="category"
+                   required>
+            <label for="caytegory">category</label>
+            <select id="category" required>
+                <option value="">Choose category</option>
+                <option value="general">General</option>
+                <option value="obc">OBC</option>
+                <option value="sc">SC</option>
+                <option value="st">ST</option>
+
+
+
+
+            <input type="password"
+                   placeholder="Create Password"
+                   required>
+
+            <input type="password"
+                   placeholder="Confirm Password"
+                   required>
+
+            <button type="submit">SIGN UP</button>
+
+        </form>
+
+        <p>Already registered?</p>
+
+        <a href="index.html">Login Here</a>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+
+    <p id="demo">Simple Calculator</p>
+
+    <script>
+        let oper = '+';
+        let x = 20, y = 50;
+        let result;
+
+        switch (oper) {
+            case '+':
+                result = x + y;
+                break;
+
+            case '-':
+                result = x - y;
+                break;
+
+            case '*':
+                result = x * y;
+                break;
+
+            case '/':
+                result = x / y;
+                break;
+
+            default:
+                result = "Invalid operator";
+        }
+
+        document.getElementById("demo").innerHTML =
+            "First number: " + x +
+            "<br>Second number: " + y +
+            "<br>Operator: " + oper +
+            "<br>Result: " + result;
+    </script>
+
+</body>
+</html>

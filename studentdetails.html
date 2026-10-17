@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>Student Details</h3>
+<p id="demo"></p>
+
+<script>
+let name = prompt("Enter student name:");
+let roll = prompt("Enter roll number");
+
+let m1 = Number(prompt("Enter Operating System marks:"));
+let m2 = Number(prompt("Enter COA marks:"));
+let m3 = Number(prompt("Enter JAVA marks:"));
+let m4 = Number(prompt("Enter DSA marks:"));
+let m5 = Number(prompt("Enter MATH marks:"));
+
+let total = m1 + m2 + m3 + m4 + m5;
+let per = total / 5;
+let grade;
+
+if (per >= 80) {
+    grade = "A";
+}
+else if (per >= 60) {
+    grade = "B";
+}
+else if (per >= 40) {
+    grade = "C";
+}
+else {
+    grade = "Fail";
+}
+
+document.getElementById("demo").innerHTML =
+    "Name: " + name + "<br>" +
+    "Roll Number: " + roll + "<br>" +
+    "Total Marks: " + total + "/500<br>" +
+    "Percentage: " + per + "%<br>" +
+    "Grade: " + grade;
+</script>
+
+</body>
+</html>

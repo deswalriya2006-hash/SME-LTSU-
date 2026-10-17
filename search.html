@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Search an Element</h2>
+
+<script>
+let arr = ["java", "c++", "python", "html", "js"];
+let search = prompt("Enter language to search:");
+let found = false;
+
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i] == search) {
+        found = true;
+        break;
+    }
+}
+
+if (found) {
+    document.write(search + " found in array");
+} else {
+    document.write(search + " not found in array");
+}
+</script>
+
+</body>
+</html>

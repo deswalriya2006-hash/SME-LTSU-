@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+    <head>   
+    <script>
+    function Add()
+    {
+        let p=document.createElement("p");
+        p.innerHTML="hello, my name is riya , i am doing btech cse , i am from haryana and i have a duffer friend named TANVIR KAUR";
+       document.getElementById("para").appendChild(p);
+     }
+     function Remove()
+     {
+         document.getElementById("para").lastElementChild.remove();
+    
+     } 
+    </script>
+    <title>student</title>
+    </head>
+
+    <body>
+        <p>about me</p>
+        <p id="para">Hii </p>
+        <div id="para1"></div>
+        <button onclick="Add()">Add</button>
+        <button onclick="Remove()">Remove</button>
+    </body>
+    </html>
+    
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+</head>
+</html>

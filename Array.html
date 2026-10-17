@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <title>Array</title>
+    </head>
+    <body>
+        <p id="demo"></p>
+        <p id="demo1"></p>
+        <script>
+            let arr=[];
+            arr.forEach(function(value){
+                document.getElementById("demo").innerHTML+= value+"<br>";
+
+            });
+            const person={
+                firstname:"john",
+                lastname:"doe",
+                age:50,
+                fullname:function(){
+                    return this.firstname+" "+this.lastname;
+                }
+            };
+            document.getElementById("demo1").innerHTML=
+            person.fullname()+"<br>"+ person.age;
+
+        </script>
+    </body>
+</html>

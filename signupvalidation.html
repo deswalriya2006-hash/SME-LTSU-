@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <script>
+ function validation(){
+                let name =document.forms["signupform"]["sname"].value;
+                let rollno =document.forms["signupform"]["srollno"].value;
+                if(name=="" && rollno =="" ) {
+                    alert("name and roll no must be filled out");
+                    return false;
+                }
+                else if(name.length<2){
+
+                }
+            }
+             </script>
+             </head>
+             <body>
+                <h2>Javascript validation</h2>
+                validatefor
+                <form name="myform" onsubmit="return validation()" method="post">
+                <input type="text" placeholder="enter name" name="sname" required>
+                <input type="text" placeholder="enter rollno" name="srollno">
+                <input type="submit" value="submit">
+                <p>if you click submit,without filling out the textin the field , a error will appear </p>
+                </form>
+                </body>
+
+</html>

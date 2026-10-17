@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Signup Form</title>
+<link rel=stylesheet href="signup">
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #9face6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+  select {
+
+
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        outline: none;
+        background-color: white;
+        font-size: 14px;
+        cursor: pointer;
+    }
+.logo {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    object-fit: contain;
+}
+
+        form {
+            background: white;
+            width: 320px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px gray;
+        }
+
+        h2 {
+            text-align: center;
+            color: #5145a5;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-box span {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+        }
+
+        input, textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 12px 12px 40px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #5145a5;
+        }
+
+        textarea {
+            height: 50px;
+            overflow: hidden;
+            resize: none;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            cursor: pointer;
+            border: none;
+            background: #5145a5;
+            color: white;
+            font-size: 15px;
+        }
+
+        input[type="reset"] {
+            background: #777;
+        }
+
+        input[type="submit"]:hover {
+            background: #302580;
+        }
+        /* Smooth transition for all fields */
+    input, textarea, select {
+        transition: all 0.25s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+        transform: scale(1.03);
+        border-color: #5145a5;
+        color: #5145a5;
+        box-shadow: 0 0 8px rgba(81, 69, 165, 0.3);
+    }
+
+    input:focus::placeholder,
+    textarea:focus::placeholder {
+        color: #9face6;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #302580;
+    }
+    </style>
+
+    <script>
+        function validation() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm").value;
+
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (name == "" || email == "" ||
+                password == "" || confirm == "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+            else if (name.length < 2) {
+                alert("Name must contain at least 2 characters");
+                return false;
+            }
+            else if (!pattern.test(email)) {
+                alert("Please enter a valid email");
+                return false;
+            }
+            else if (password.length < 6) {
+                alert("Password must contain at least 6 characters");
+                return false;
+            }
+            else if (password != confirm) {
+                alert("Passwords do not match");
+                return false;
+            }
+            else {
+                alert("Signup successful!");
+                return false;
+            }
+        }
+
+        function modifyText() {
+            const namefield = document.getElementById("message");
+            namefield.style.height = "50px";
+            namefield.style.height = namefield.scrollHeight + "px";
+        }
+    </script>
+</head>
+
+<body>
+
+    <form name="myform" onsubmit="return validation()">
+
+        <h2>Lamrin Tech Skills University</h2>
+
+<div class="logo">
+    <img src="https://tse1.mm.bing.net/th/id/OIP.peTlY4MW6dM1Osd0xQf5GwAAAA?r=0&pid=Api&h=220&P=0" height="80" width="80" alt=logo>
+</div>
+
+       
+        <div class="input-box">
+         
+            <input type="text" id="name"
+            placeholder="Enter your name" required>
+        </div>
+
+        <div class="input-box">
+           
+            <input type="text" id="email"
+            placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-box">
+           
+            <input type="password" id="password"
+            placeholder="Enter password" required>
+        </div>
+        <!-- Semester Dropdown -->
+    <div class="input-box">
+        <select id="semester" required>
+            <option value="">Select Semester</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+            <option value="3">3rd Semester</option>
+            <option value="4">4th Semester</option>
+            <option value="5">5th Semester</option>
+            <option value="6">6th Semester</option>
+            <option value="7">7th Semester</option>
+            <option value="8">8th Semester</option>
+        </select>
+    </div>
+
+    <!-- Gender Dropdown -->
+    <div class="input-box">
+        <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="prefer-not-to-say">Prefer not to say</option>
+        </select>
+    </div>
+
+
+        <div class="input-box">
+           
+            <input type="password" id="confirm"
+            placeholder="Confirm password" required>
+        </div>
+
+        <div class="input-box">
+           
+            <textarea id="message"
+            placeholder="Write about yourself"
+            oninput="modifyText()"></textarea>
+        </div>
+
+        <input type="submit" value="Sign Up">
+        <input type="reset" value="Reset">
+
+    </form>
+
+</body>
+</html>
